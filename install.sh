@@ -16,18 +16,18 @@ if [ "$#" == "1" ]; then
     fi
   else
     echo "Sorry, couldn't find $INSTALL_FOLDER"
-	  exit 1 
+    exit 1
   fi
 fi
 
 # Try to find git-core hooks folder.
-if [ -z $(which locate) ] ; then
-  echo "Go get Linux."
+if [ -z $(which find) ] ; then
+  echo "Please install the find command. You may need to use Git Bash for Windows or your provided package manager."
   exit 1
 fi
-INSTALL_FOLDER=$(locate -l 1 git-core/templates/hooks)
+INSTALL_FOLDER=$(find /usr/share -path "*/git-core/templates/hooks" -type d -print -quit 2>/dev/null)
 
-if [ -n $INSTALL_FOLDER ] && [ -d $INSTALL_FOLDER ] ; then
+if [[ ! -z $INSTALL_FOLDER ]] && [ -n $INSTALL_FOLDER ] && [ -d $INSTALL_FOLDER ] ; then
   if [ -e "$INSTALL_FOLDER/commit-msg" ] ; then
     echo "You're already using commit-msg hooks, you'll need to install this manually."
     echo "You can also use this only on specific projects running ./install.sh path/to/a/repo"
@@ -35,7 +35,7 @@ if [ -n $INSTALL_FOLDER ] && [ -d $INSTALL_FOLDER ] ; then
   else
     echo "Copying file..."
     sudo cp commit-msg $INSTALL_FOLDER/
-    echo "Done! Installed n ${INSTALL_FOLDER}"
+    echo "Done! Installed in ${INSTALL_FOLDER}"
     exit 0
   fi
 else
