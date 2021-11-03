@@ -35,7 +35,7 @@ if [[ ! -z $INSTALL_FOLDER ]] && [ -n $INSTALL_FOLDER ] && [ -d $INSTALL_FOLDER 
   else
     echo "Copying file..."
     sudo cp commit-msg $INSTALL_FOLDER/
-    echo "Done! Installed n ${INSTALL_FOLDER}"
+    echo "Done! Installed in ${INSTALL_FOLDER}"
     exit 0
   fi
 else
