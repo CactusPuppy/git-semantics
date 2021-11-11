@@ -17,7 +17,7 @@ if ! [[ $(cat $1) =~ ^((build|chore|ci|docs|feat|fix|perf|refact|refactor|style|
   printf "${yellow}feat${NC}[${green}(scope)${NC}]: ${blue}add hat wobble\n"
   printf "${yellow}^--^${green} ^--*--^ ${blue}  ^------------^ -> Summary in present tense.\n"
   printf "${yellow} *      ${green}*-> [optional]: Scope of the commit.\n"
-  printf "${yellow} *-> Type: chore, docs, feat, fix, merge, perf, refact, style, test, or wip.\n${NC}"
+  printf "${yellow} *-> Type: build, chore, ci, docs, feat, fix, perf, refact, refactor, style, test, or wip.\n${NC}"
   exit 1
 fi
 
